@@ -1,69 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Intel Sustainability Summit Check-In</title>
-    <!-- Add Font Awesome CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Hero section with Intel branding -->
-    <div class="hero">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intel Sustainability Summit Check-In</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <img src="img/intel-logo.svg" alt="Intel logo" class="intel-logo" />
       <div class="hero-content">
-        <img src="img/intel-logo.svg" alt="Intel Logo" class="intel-logo" />
-        <h1>Team Sustainability Summit</h1>
+        <h1>Intel Sustainability Summit Check-In</h1>
         <div class="hero-divider"></div>
-        <p>
-          <i class="fas fa-leaf"></i> Check-in system for sustainability event
-          attendees
-        </p>
+        <p>Track attendee check-ins for Water Wise, Net Zero, and Renewables.</p>
       </div>
-    </div>
-    <!-- Attendance tracking -->
-    <div class="attendance-tracker">
-      <div class="attendance-header">
-        <i class="fas fa-users"></i>
-        Attendance: <span id="attendeeCount">0</span>/50
-      </div>
-      <div class="progress-container">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
-    </div>
-    <div class="container">
-      <!-- Feedback message -->
-      <p id="greeting"></p>
+    </header>
 
-      <!-- Check-in form -->
-      <form class="check-in" id="checkInForm">
-        <label for="attendeeName" class="form-label">Attendee Check-In</label>
+    <section class="check-in">
+      <form id="checkInForm">
         <div class="form-group">
-          <div class="input-wrapper">
-            <input
-              type="text"
-              id="attendeeName"
-              name="attendeeName"
-              placeholder="Enter name..."
-              required
-            />
-            <select id="teamSelect" name="team" required>
-              <option value="" disabled selected>Select Team...</option>
-              <option value="water">Team Water Wise</option>
-              <option value="zero">Team Net Zero</option>
-              <option value="power">Team Renewables</option>
-            </select>
-          </div>
-          <button type="submit" id="checkInBtn">
-            <i class="fas fa-user-check"></i> Check In
-          </button>
+          <label class="form-label" for="nameInput">Name</label>
+          <input type="text" id="nameInput" name="name" placeholder="Enter name..." required />
         </div>
+
+        <div class="form-group">
+          <label class="form-label" for="teamSelect">Team</label>
+          <select id="teamSelect" name="team" required>
+            <option value="" disabled selected>Select Team...</option>
+            <option value="Water Wise">Water Wise</option>
+            <option value="Net Zero">Net Zero</option>
+            <option value="Renewables">Renewables</option>
+          </select>
+        </div>
+
+        <button type="submit" id="checkInBtn">
+          <i class="fas fa-user-check"></i> Check In
+        </button>
       </form>
 
-      <!-- Team stats -->
+      <div id="greeting" class="success-message" aria-live="polite"></div>
+
+      <div class="attendance-tracker">
+        <div class="attendance-header">
+          <i class="fas fa-chart-line"></i>
+          <span><strong><span id="totalCount">0</span></strong> attendees checked in</span>
+        </div>
+
+        <div class="progress-container">
+          <div id="progressBar" class="progress-bar" style="width: 0%"></div>
+        </div>
+        <p><span id="progressPercent">0%</span> of 100 attendee goal</p>
+      </div>
+
       <div class="team-stats">
         <h3>Team Attendance</h3>
         <div class="teams-grid">
@@ -73,25 +62,22 @@
           </div>
           <div class="team-card zero">
             <span class="team-name">🌿 Team Net Zero</span>
-            <span class="team-count" id="zeroCount">0</span>
+            <span class="team-count" id="netZeroCount">0</span>
           </div>
           <div class="team-card power">
             <span class="team-name">⚡ Team Renewables</span>
-            <span class="team-count" id="powerCount">0</span>
+            <span class="team-count" id="renewablesCount">0</span>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <footer class="footer">
       &copy; 2025 Intel •
-      <a
-        href="https://www.intel.com/content/www/us/en/corporate-responsibility/2030-goals.html"
-        class="footer-link"
-        >Sustainability Goals</a
-      >
+      <a href="https://www.intel.com/content/www/us/en/corporate-responsibility/2030-goals.html" class="footer-link">Sustainability Goals</a>
     </footer>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
